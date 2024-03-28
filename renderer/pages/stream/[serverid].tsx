@@ -176,7 +176,7 @@ function Stream() {
                                 input_legacykeyboard: (settings.input_newgamepad) ? false : true,
                                 input_mousekeyboard_config: settings.input_mousekeyboard_config !== undefined ? {
                                     _keymapping: settings.input_mousekeyboard_config,
-                                } : undefined,
+                                } : undefined as any,
                             }))
                             break
 
