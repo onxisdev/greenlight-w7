@@ -6,29 +6,17 @@ import Card from '../../components/ui/card'
 
 import { useSettings } from '../../context/userContext'
 
-// function getUniqueButtons(keyMapping) {
-//     const buttons = []
-//     for(const button in keyMapping) {
-//         // k = actualButton,  v = gamepadButton
-//         buttons.push(keyMapping[button])
-//     }
-//     const uniqueButtons = buttons.filter((v, i, a) => a.indexOf(v) === i)
-//     return uniqueButtons
-// }
-
 function invert(obj) {
     const new_obj = {}
     for (const prop in obj) {
-        // if(obj.hasOwnProperty(prop)) {
         new_obj[obj[prop]] = prop
-        // }
     }
     return new_obj
 }
 
 function KeySettings({keyConfigs, setKeyConfig}) {
     const mappableButtons = ['DPadUp', 'DPadDown', 'DPadLeft', 'DPadRight', 'A', 'B', 'X', 'Y', 'View', 'Menu', 'Nexus', 'LeftShoulder', 'RightShoulder', 'LeftTrigger', 'RightTrigger', 'LeftThumb', 'RightThumb']
-    console.log('KEYS:', keyConfigs, mappableButtons)
+    // console.log('KEYS:', keyConfigs, mappableButtons)
     keyConfigs = invert(keyConfigs)
     return <p>
         {
@@ -140,7 +128,7 @@ function SettingsInput() {
             if(ckeys[ckeysKey] === button) delete ckeys[ckeysKey]
         }
 
-        if (event.key !== 'Backspace')
+        if (event.key !== 'Escape')
             ckeys[event.key] = button
 
         setControllerKeys(ckeys)
