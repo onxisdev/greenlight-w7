@@ -16,7 +16,7 @@ export default class AuthTokenStore extends TokenStore {
         const data = JSON.stringify({
             userToken: this._userToken?.data,
             sisuToken: this._sisuToken?.data,
-            jwtKeys: this._jwtKeys
+            jwtKeys: this._jwtKeys,
         })
 
         this._store.set('user.tokenstore', data)
