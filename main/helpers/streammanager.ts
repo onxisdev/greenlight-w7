@@ -173,9 +173,14 @@ export default class StreamManager {
                 } else if(result.state === 'ReadyToConnect'){
                     // Do MSAL Auth
                     // @TODO: Refresh token if expired?
-                    this.getApi(this.getSession(sessionId).type).sendMSALAuth(sessionId, this._application._authentication._tokens.msal.token).then(() => {
-                        this.monitorSession(sessionId)
+                    this._application._authentication._xal.getMsalToken(this._application._authentication._tokenStore).then((msalToken) => {
+                        this.getApi(this.getSession(sessionId).type).sendMSALAuth(sessionId, msalToken.data.lpt).then(() => {
+                            this.monitorSession(sessionId)
 
+                        }).catch((error) => {
+                            console.log('MSAL AUTH Error:', error)
+                            alert('MSAL AUTH Error:'+ error)
+                        })
                     }).catch((error) => {
                         console.log('MSAL AUTH Error:', error)
                         alert('MSAL AUTH Error:'+ error)

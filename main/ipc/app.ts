@@ -74,6 +74,7 @@ export default class IpcApp extends IpcBase {
     clearData(){
         return new Promise<boolean>((resolve, reject) => {
             session.defaultSession.clearStorageData().then(() => {
+                this._application._authentication._tokenStore.clear()
                 this._application._store.delete('user')
                 this._application._store.delete('auth')
 
