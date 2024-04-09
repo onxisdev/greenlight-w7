@@ -35,7 +35,7 @@
     "playwright": "^1.40.0",
     "react-query": "^3.39.3",
     "uplot": "^1.6.30",
-    "xal-node": "^0.2.0",
+    "xal-node": "^1.0.1",
     "xbox-webapi": "^1.4.1",
     "xbox-xcloud-player": "^0.2.11",
     "xvfb-maybe": "^0.2.1"

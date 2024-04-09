@@ -74,6 +74,7 @@ export default class IpcApp extends IpcBase {
     clearData(){
         return new Promise<boolean>((resolve, reject) => {
             session.defaultSession.clearStorageData().then(() => {
+                this._application._authentication._tokenStore.clear()
                 this._application._store.delete('user')
                 this._application._store.delete('auth')
 
@@ -90,7 +91,12 @@ export default class IpcApp extends IpcBase {
 
     getOnlineFriends(){
         return new Promise((resolve) => {
-            resolve(this._application._xboxWorker._onlineFriends)
+            if(this._application._xboxWorker === undefined){
+                // Worker is not loaded yet..
+                resolve([])
+            } else {
+                resolve(this._application._xboxWorker._onlineFriends)
+            }
         })
     }
 
@@ -159,6 +165,17 @@ export default class IpcApp extends IpcBase {
             name: 'Streaming',
             data: [
                 { name: 'Active sessions', value: Object.keys(this._application._ipc._channels.streaming._streamManager._sessions).length },
+
+            ],
+        })
+
+        // Tokenstore values
+        returnValue.push({
+            name: 'XAL',
+            data: [
+                { name: 'User token expires in', value: this._application._authentication._tokenStore.getUserToken().getSecondsValid() },
+                { name: 'Sisu token expires in', value: this._application._authentication._tokenStore.getSisuToken().getSecondsValid() },
+                { name: 'Authenticated user', value: this._application._authentication._tokenStore.getSisuToken().getGamertag() + ' ('+this._application._authentication._tokenStore.getSisuToken().getUserHash()+')' },
 
             ],
         })
