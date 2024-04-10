@@ -202,7 +202,10 @@ export default class Application {
         })
 
         this._authentication._xal.getStreamingToken(this._authentication._tokenStore).then((streamingTokens) => {
-            this._xHomeApi = new xCloudApi(this, 'uks.gssv-play-prodxhome.xboxlive.com', streamingTokens.xHomeToken.data.gsToken, 'home')
+            this.log('electron', __filename+'[authenticationCompleted()] Using hosts for xCloud and xHome:')
+            this.log('electron', __filename+'[authenticationCompleted()] - xHome:', streamingTokens.xHomeToken.getDefaultRegion().baseUri.substring(8))
+            this.log('electron', __filename+'[authenticationCompleted()] - xCloud:', streamingTokens.xCloudToken.getDefaultRegion().baseUri.substring(8))
+            this._xHomeApi = new xCloudApi(this, streamingTokens.xHomeToken.getDefaultRegion().baseUri.substring(8), streamingTokens.xHomeToken.data.gsToken, 'home')
             this._xCloudApi = new xCloudApi(this, streamingTokens.xCloudToken.getDefaultRegion().baseUri.substring(8), streamingTokens.xCloudToken.data.gsToken, 'cloud')
 
             // Let IPC know we are ready
