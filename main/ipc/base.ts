@@ -46,7 +46,7 @@ export default class IpcBase {
     }
 
     send(channel, args:EventArgs){
-        this._application.log('Ipc:Send', 'Sending event: ['+channel+']', args)
+        this._application.log('Ipc:Send', 'Sending event: ['+channel+']', JSON.stringify(args))
         this._application._mainWindow.webContents.send(channel, {
             action: args.action,
             id: args.id,

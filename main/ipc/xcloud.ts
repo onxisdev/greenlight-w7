@@ -32,25 +32,29 @@ export default class IpcxCloud extends IpcBase {
     }
 
     onUserLoaded(){
-        this._application._xCloudApi.getTitles().then((titles:any) => {
-            this._titleManager.setCloudTitles(titles).then(() => {
+        if(this._application._xCloudApi !== undefined){
+            this._application._xCloudApi.getTitles().then((titles:any) => {
+                this._titleManager.setCloudTitles(titles).then(() => {
 
-                this._application.log('Ipc:xCloud', 'Titlemanager has loaded all titles.')
-                this._titlesAreLoaded = true
+                    this._application.log('Ipc:xCloud', 'Titlemanager has loaded all titles.')
+                    this._titlesAreLoaded = true
 
-                // Uncomment to delay the process of loading data
-                // setTimeout(() => {
-                //     this._titlesAreLoaded = true
-                // }, 5000)
+                    // Uncomment to delay the process of loading data
+                    // setTimeout(() => {
+                    //     this._titlesAreLoaded = true
+                    // }, 5000)
+
+                }).catch((error) => {
+                    this._application.log('Ipc:xCloud', 'Titlemanager is unable to load titles:', error)
+                    console.log('Error setting xCloud titles:', error)
+                })
 
             }).catch((error) => {
-                this._application.log('Ipc:xCloud', 'Titlemanager is unable to load titles:', error)
-                console.log('Error setting xCloud titles:', error)
+                this._application.log('Ipc:xCloud', 'Could not load recent titles:', error)
             })
-
-        }).catch((error) => {
-            this._application.log('Ipc:xCloud', 'Could not load recent titles:', error)
-        })
+        } else {
+            this._application.log('Ipc:xCloud', 'xCloud IPC is not preloading titles as we dont have a valid token')
+        }
     }
 
     // Returns the last played titles (stream titles)

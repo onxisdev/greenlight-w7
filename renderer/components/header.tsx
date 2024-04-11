@@ -25,10 +25,12 @@ function Header({
                 name: 'My Consoles',
                 title: 'View consoles',
                 url: '/home',
+                active: false,
             }, {
                 name: 'xCloud Library',
                 title: 'Browse xCloud library',
                 url: '/xcloud/home',
+                active: false,
                 // },{
                 //   name: 'Debug',
                 //   title: 'Debug page',
@@ -37,25 +39,29 @@ function Header({
                 name: 'Settings',
                 title: 'Change application settings',
                 url: '/settings/home',
+                active: false,
             }, {
                 name: gamertag,
                 title: 'View profile',
                 url: '/profile',
+                active: false,
             },
         ] : [
             {
                 name: 'My Consoles',
                 title: 'View consoles',
                 url: '/home',
-                active: true,
+                active: false,
             }, {
                 name: 'Settings',
                 title: 'Change application settings',
                 url: '/settings/home',
+                active: false,
             }, {
                 name: gamertag,
                 title: 'View profile',
                 url: '/profile',
+                active: false,
             },
         ]
     }

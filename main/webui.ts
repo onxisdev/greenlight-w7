@@ -20,7 +20,7 @@ export default class WebUI {
         const rawSettings = this._application._store.get('settings', defaultSettings) as object
         const settings = {...defaultSettings, ...rawSettings}
 
-        this._application.log('webui', 'Settings:', settings, rawSettings)
+        // this._application.log('webui', 'Settings:', settings, rawSettings)
 
         if(settings.webui_autostart === true){
             this.startServer(settings.webui_port)

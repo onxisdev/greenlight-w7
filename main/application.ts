@@ -153,67 +153,47 @@ export default class Application {
     _xCloudApi:xCloudApi
     _xboxWorker:xboxWorker
 
-    authenticationCompleted(){
+    authenticationCompleted(streamingTokens, webToken){
         this.log('electron', __filename+'[authenticationCompleted()] authenticationCompleted called')
         // const tokens = this._authentication._tokens
+        this._xHomeApi = new xCloudApi(this, streamingTokens.xHomeToken.getDefaultRegion().baseUri.substring(8), streamingTokens.xHomeToken.data.gsToken, 'home')
 
-        this._authentication._xal.getWebToken(this._authentication._tokenStore).then((webToken) => {
-            this.log('electron', __filename+'[authenticationCompleted()] getWebToken resolved:', webToken.data.Token, webToken.data.DisplayClaims.xui[0].uhs)
+        if(streamingTokens.xCloudToken !== null){
+            this._xCloudApi = new xCloudApi(this, streamingTokens.xCloudToken.getDefaultRegion().baseUri.substring(8), streamingTokens.xCloudToken.data.gsToken, 'cloud')
+        }
 
-            this._webApi = new xboxWebApi({
-                userToken: webToken.data.Token,
-                uhs: webToken.data.DisplayClaims.xui[0].uhs,
-            })
-
-            console.log('xboxapi', this._webApi)
-
-            this._webApi.getProvider('profile').get('/users/me/profile/settings?settings=GameDisplayName,GameDisplayPicRaw,Gamerscore,Gamertag').then((result) => {
-                if(result.profileUsers.length > 0) {
-                    for(const setting in result.profileUsers[0].settings){
-
-                        if(result.profileUsers[0].settings[setting].id === 'Gamertag'){
-                            this._store.set('user.gamertag', result.profileUsers[0].settings[setting].value)
-
-                        } else if(result.profileUsers[0].settings[setting].id === 'GameDisplayPicRaw'){
-                            this._store.set('user.gamerpic', result.profileUsers[0].settings[setting].value)
-
-                        } else if(result.profileUsers[0].settings[setting].id === 'Gamerscore'){
-                            this._store.set('user.gamerscore', result.profileUsers[0].settings[setting].value)
-                        }
-                    }
-                }
-
-                // Run workers
-                this._xboxWorker = new xboxWorker(this)
-
-            }).catch((error) => {
-                this.log('electron', __filename+'[authenticationCompleted()] Failed to retrieve user profile:', error)
-                dialog.showMessageBox({
-                    message: 'Error: Failed to retrieve user profile:'+ JSON.stringify(error),
-                    type: 'error',
-                })
-            })
-        }).catch((error) => {
-            this.log('electron', __filename+'[authenticationCompleted()] Failed to retrieve web tokens:', error)
-            dialog.showMessageBox({
-                message: 'Error: Failed to retrieve web tokens:'+ JSON.stringify(error),
-                type: 'error',
-            })
+        this._webApi = new xboxWebApi({
+            userToken: webToken.data.Token,
+            uhs: webToken.data.DisplayClaims.xui[0].uhs,
         })
 
-        this._authentication._xal.getStreamingToken(this._authentication._tokenStore).then((streamingTokens) => {
-            this.log('electron', __filename+'[authenticationCompleted()] Using hosts for xCloud and xHome:')
-            this.log('electron', __filename+'[authenticationCompleted()] - xHome:', streamingTokens.xHomeToken.getDefaultRegion().baseUri.substring(8))
-            this.log('electron', __filename+'[authenticationCompleted()] - xCloud:', streamingTokens.xCloudToken.getDefaultRegion().baseUri.substring(8))
-            this._xHomeApi = new xCloudApi(this, streamingTokens.xHomeToken.getDefaultRegion().baseUri.substring(8), streamingTokens.xHomeToken.data.gsToken, 'home')
-            this._xCloudApi = new xCloudApi(this, streamingTokens.xCloudToken.getDefaultRegion().baseUri.substring(8), streamingTokens.xCloudToken.data.gsToken, 'cloud')
+        this._authentication._isAuthenticating = false
+        this._authentication._isAuthenticated = true
 
-            // Let IPC know we are ready
+        this._webApi.getProvider('profile').get('/users/me/profile/settings?settings=GameDisplayName,GameDisplayPicRaw,Gamerscore,Gamertag').then((result) => {
+            if(result.profileUsers.length > 0) {
+                for(const setting in result.profileUsers[0].settings){
+
+                    if(result.profileUsers[0].settings[setting].id === 'Gamertag'){
+                        this._store.set('user.gamertag', result.profileUsers[0].settings[setting].value)
+
+                    } else if(result.profileUsers[0].settings[setting].id === 'GameDisplayPicRaw'){
+                        this._store.set('user.gamerpic', result.profileUsers[0].settings[setting].value)
+
+                    } else if(result.profileUsers[0].settings[setting].id === 'Gamerscore'){
+                        this._store.set('user.gamerscore', result.profileUsers[0].settings[setting].value)
+                    }
+                }
+            }
+
+            // Run workers
+            this._xboxWorker = new xboxWorker(this)
             this._ipc.onUserLoaded()
+
         }).catch((error) => {
-            this.log('electron', __filename+'[authenticationCompleted()] Failed to retrieve streaming tokens:', error)
+            this.log('electron', __filename+'[authenticationCompleted()] Failed to retrieve user profile:', error)
             dialog.showMessageBox({
-                message: 'Error: Failed to retrieve streaming tokens:'+ JSON.stringify(error),
+                message: 'Error: Failed to retrieve user profile:'+ JSON.stringify(error),
                 type: 'error',
             })
         })

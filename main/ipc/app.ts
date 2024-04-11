@@ -170,12 +170,16 @@ export default class IpcApp extends IpcBase {
         })
 
         // Tokenstore values
+        const xCloudTokenValid = (this._application._authentication._xal._xcloudToken !== null) ? this._application._authentication._xal._xcloudToken.getSecondsValid() : 'None'
         returnValue.push({
             name: 'XAL',
             data: [
                 { name: 'User token expires in', value: this._application._authentication._tokenStore.getUserToken().getSecondsValid() },
                 { name: 'Sisu token expires in', value: this._application._authentication._tokenStore.getSisuToken().getSecondsValid() },
                 { name: 'Authenticated user', value: this._application._authentication._tokenStore.getSisuToken().getGamertag() + ' ('+this._application._authentication._tokenStore.getSisuToken().getUserHash()+')' },
+                { name: '', value: '' },
+                { name: 'xHome Token validity', value: this._application._authentication._xal._xhomeToken.getSecondsValid() },
+                { name: 'xCloud Token validity', value: xCloudTokenValid },
 
             ],
         })
