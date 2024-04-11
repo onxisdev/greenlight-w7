@@ -1,5 +1,10 @@
 # Changelog
 
+## v2.3.0 - 2024-04-11
+- Fixed 401 error when starting a new stream from console #1192
+- Added ability to map buttons (credits to @kouta-kun)
+- Updated authentication mechanism to support persistent logins (no more popups!)
+
 ## v2.2.1 - 2024-03-11
 - Fixed authentication on a fresh installation. #1168
 

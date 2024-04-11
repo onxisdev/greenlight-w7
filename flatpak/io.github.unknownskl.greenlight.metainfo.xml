@@ -22,6 +22,15 @@
     </screenshot>
   </screenshots>
   <releases>
+    <release version="2.3.0" date="2024-04-11">
+     <description>
+        <ul>
+          <li>Fixed 401 error when starting a new stream from console</li>
+          <li>Added ability to map buttons (credits to @kouta-kun)</li>
+          <li>Updated authentication mechanism to support persistent logins</li>
+        </ul>
+     </description>
+    </release>
     <release version="2.2.1" date="2024-03-11">
      <description>
         <ul>
