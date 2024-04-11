@@ -1,5 +1,8 @@
 # Changelog
 
+## v2.3.1 - 2024-04-12
+- Fix xCloud error after login when launching the application in a non xCloud supported country #1193
+
 ## v2.3.0 - 2024-04-11
 - Fixed 401 error when starting a new stream from console #1192
 - Added ability to map buttons (credits to @kouta-kun)
