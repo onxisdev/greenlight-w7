@@ -5623,10 +5623,10 @@ ws@^7.4.6:
   resolved "https://registry.yarnpkg.com/ws/-/ws-7.5.9.tgz#54fa7db29f4c7cec68b1ddd3a89de099942bb591"
   integrity sha512-F+P9Jil7UiSKSkppIiD94dN07AwvFixvLIj1Og1Rl9GGMuNipJnV9JzjD6XuqmAeiswGvUmNLjr5cFuXwNS77Q==
 
-xal-node@^1.0.1:
-  version "1.0.1"
-  resolved "https://registry.yarnpkg.com/xal-node/-/xal-node-1.0.1.tgz#c8f2f5fc822700f00e10b570b8ed0db36e6a6b09"
-  integrity sha512-xH57oIDd9i50IEI2u7vb/x5FiLYJ7rOIf6juMYp7wDuUU6gOXxKfkx8CST2r6i+vWkynv8FnYFin5ShrJVLJbg==
+xal-node@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/xal-node/-/xal-node-1.0.2.tgz#60f4a9039684e00747992a725606eeb9b7133bf2"
+  integrity sha512-Iogs2sw0pm+zdLQ9cFgwNfAB5YKedOZbnMNF4jC4ohOqnTkfO8BZAX7pS7bvV1Y6ZBKkF+CbfjBbgg36d9y7ow==
   dependencies:
     commander "^12.0.0"
     jose "^5.1.0"
