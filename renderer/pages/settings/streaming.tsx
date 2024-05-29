@@ -48,7 +48,7 @@ function SettingsStreaming() {
         })
 
         Ipc.send('app', 'setPreferredGameLanguage', { language: e }).then((res) => {
-            console.log('Set preferred game\'s language:', res)
+            console.log('Set preferred game language:', res)
         })
     }
 
@@ -74,7 +74,7 @@ function SettingsStreaming() {
                     <h1>Stream settings</h1>
 
                     <p>
-                xHome and xCloud does not support more then 20mbps by default. This setting does not override this limit.
+                xHome and xCloud do not support more than 20mbps by default. This setting does not override this limit.
                     </p>
                     <p>
 
@@ -89,7 +89,7 @@ function SettingsStreaming() {
                     </p>
 
                     <p>
-                        <label>Set H264 Profile </label>
+                        <label>Set H.264 Profile </label>
                         <select value={ (settings.video_profiles.length > 0) ? settings.video_profiles[0] : '' } onChange={ (e) => setVideoProfile(e.target.value) }>
                             <option value="">Auto-Negotiate</option>
                             <option value="4d">High</option>
@@ -116,7 +116,7 @@ function SettingsStreaming() {
                         </select>
                     </p>
                     <p>
-                        <label>Preferred game's language:</label>
+                        <label>Preferred game language:</label>
                         <select value={settings.preferred_game_language || ''} onChange={(e) => setPreferredGameLanguage(e.target.value)}>
                             <option value="ar-SA">Arabic (Saudi Arabia)</option>
                             <option value="cs-CZ">Czech</option>

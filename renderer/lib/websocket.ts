@@ -92,7 +92,7 @@ export default class WebsocketIPC {
             }
         }
 
-        console.log('Its empty! Deleting key:', action)
+        console.log('It\'s empty! Deleting key:', action)
         delete this._onAction[channel][action]
 
         // console.log('HOOKIPC: removeListener called:', channel, listener, this._onAction[channel])

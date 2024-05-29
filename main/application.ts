@@ -223,10 +223,10 @@ export default class Application {
         this._mainWindow.on('close', (event) => {
             if(this._isMac === true && this._isQuitting === false){
                 event.preventDefault()
-                this.log('electron', __filename+'[openMainWindow()] Main windows has been hidden')
+                this.log('electron', __filename+'[openMainWindow()] Main window has been hidden')
                 this._mainWindow.hide()
             } else {
-                this.log('electron', __filename+'[openMainWindow()] Main windows has been closed')
+                this.log('electron', __filename+'[openMainWindow()] Main window has been closed')
                 this._mainWindow = undefined
             }
         })

@@ -33,7 +33,7 @@ function Auth({
     }
 
     function clearData(){
-        if(confirm('This will remove all application data. Sometimes helpful when you are stuck in a login loop. Do you want to continue?')){
+        if(confirm('This will remove all application data, which is sometimes helpful when you are stuck in a login loop. Do you want to continue?')){
             Ipc.send('app', 'clearData')
         }
     }

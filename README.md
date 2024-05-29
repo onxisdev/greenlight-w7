@@ -2,8 +2,8 @@
 
 [![Build/release](https://github.com/unknownskl/greenlight/actions/workflows/build.yml/badge.svg)](https://github.com/unknownskl/greenlight/actions/workflows/build.yml)
 
-Greenlight is an open-source client for xCloud and xHome streaming made in Javascript and Typescript. The client is an application wrapper around [xbox-xcloud-player](https://github.com/unknownskl/xbox-xcloud-player).
-Application runs on Linux, mac, Windows and Steam Deck.
+Greenlight is an open-source client for xCloud and Xbox home streaming made in Javascript and Typescript. The client is an application wrapper around [xbox-xcloud-player](https://github.com/unknownskl/xbox-xcloud-player).
+The application runs on Linux, macOS, Windows and Steam Deck.
 
 _DISCLAIMER: Greenlight is not affiliated with Microsoft, Xbox or Moonlight. All rights and trademarks are property of their respective owners._
 
@@ -23,15 +23,15 @@ _DISCLAIMER: Greenlight is not affiliated with Microsoft, Xbox or Moonlight. All
 [![Build/release](https://flathub.org/assets/badges/flathub-badge-en.svg)](https://flathub.org/apps/details/io.github.unknownskl.greenlight)
 
 ### Download pre-compiled binaries:
-[Latest releases can be found here](https://github.com/unknownskl/greenlight/releases)
+[Latest releases can be found here](https://github.com/unknownskl/greenlight/releases).
 
 ### Compile from source
 
-See [Local development](?tab=readme-ov-file#local-development)
+See [Local development](?tab=readme-ov-file#local-development).
 
 ## Keyboard controls
 
-The following keys are mapped as following:
+Keys are mapped as following by default:
 
     Dpad: Keypad direction controls
     Buttons: A, B, X, Y, Backspace (Mapped as B), Enter (Mapped as A)
@@ -45,11 +45,11 @@ The following keys are mapped as following:
 
 ## Streaming stats
 
-During the stream you can show extra debug statistics that contain extra data about the buffer queues and other information. To bring this up you have to press `~` on your keyboard.
+During the stream you can show debug statistics that contain extra data about the buffer queues and other information. To bring this up you can press `~` on your keyboard.
 
-On the left bottom you can see the status (Altough not always accurate). The right top you can find the FPS of the video and audio decoders including the latency. On the right bottom you can find debug information about the buffer queues and other information that is useful for debugging perposes.
+At the bottom-left you can see the status (although not always accurate). At the top-right you can find the FPS of the video and audio decoders including the latency. At the bottom-right you can find debug information about the buffer queues and other information that is useful for debugging perposes.
 
-When possible always provide this information with your issue when possible (if it is related).
+When possible always provide this information with your issue, if it is related.
 
 ## Online friends list
 
@@ -66,11 +66,11 @@ This application is reported to be working on the Steam Deck with some small bug
 | --fullscreen | Starts the application in fullscreen |
 | --connect=<value> | Will start stream once the user is authenticated. |
 
-For console use `F000000000000000` format and for xCloud use `xcloud_<title>`
+For console use `F000000000000000` format and for xCloud use `xcloud_<title>`.
 
 ## To close the application
 
-Click on the Xbox logo on the left top. It will ask you to confirm to close the window.
+Click on the Xbox logo at the top-left. It will ask you to confirm to close the window.
 
 ## Local Development
 
@@ -101,4 +101,4 @@ Create production build:
 
 ## Changelog
 
-See [changelog](CHANGELOG.md)
+See [changelog](CHANGELOG.md).
