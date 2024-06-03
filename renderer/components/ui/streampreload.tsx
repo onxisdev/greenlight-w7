@@ -84,7 +84,7 @@ function StreamPreload({
         }
 
         if(seconds === 0){
-            formattedText += '\nIts taking a little longer.. Your stream may start soon.'
+            formattedText += '\nIt\'s taking a little longer.. Your stream may start soon.'
         }
 
         return formattedText

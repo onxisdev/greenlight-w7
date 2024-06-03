@@ -23,7 +23,7 @@ export const UserProvider = ({ children }) => {
         const localSettings = localStorage.getItem('settings')
         if(localSettings !== null) {
             // We have a local settings item. Lets migrate to backend.
-            console.log('Settings found in localStorage. migrating to backend:', localSettings)
+            console.log('Settings found in localStorage. Migrating to backend:', localSettings)
             const migSetting = JSON.parse(localSettings)
             Ipc.send('settings', 'setSettings', migSetting).then(() => {
                 console.log('Settings migrated. Removing from localStorage and loading from backend')

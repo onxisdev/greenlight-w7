@@ -76,7 +76,7 @@ function SettingsHome() {
                         <p>
                     Version: { window.Greenlight.getVersion() }<br /><br />
                             <small>Website: <Link href="#" title="Open link in external browser" onClick={ () => {
-                                window.Greenlight.openExternal('https://www.github.com/unknownskl/greenlight')
+                                window.Greenlight.openExternal('https://github.com/unknownskl/greenlight')
                             }}>github.com/unknownskl/greenlight</Link></small>
                         </p>
                     </div>

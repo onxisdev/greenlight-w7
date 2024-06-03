@@ -74,7 +74,7 @@ function Home() {
                                 </div>
                             </Card>
                         ) 
-                    }) : <Card className='padbottom' key='noconsoles'>No consoles found on your account. If you do have an Xbox console then make sure that remote playing is enabled and is visible in the official Xbox App.</Card>
+                    }) : <Card className='padbottom' key='noconsoles'>No consoles found on your account. If you do have an Xbox console then make sure that remote playing is enabled and that the console is visible in the official Xbox App.</Card>
                 }
             </div>
 

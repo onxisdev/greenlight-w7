@@ -186,7 +186,7 @@ function SettingsInput() {
                     <h1>Controllers detected</h1>
 
                     <p>
-                        If you have a gamepad connected but it is not showing up, try to press a button on the controller to detect it.
+                        If you have a controller connected but it is not showing up, try to press a button on the controller to detect it.
                     </p>
 
                     <div>
