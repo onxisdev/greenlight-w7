@@ -1,6 +1,6 @@
 # Greenlight
 
-[![Build/release](https://github.com/unknownskl/greenlight/actions/workflows/build.yml/badge.svg)](https://github.com/unknownskl/greenlight/actions/workflows/build.yml)
+[![Build/release](https://github.com/onxisdev/greenlight-w7/actions/workflows/build.yml/badge.svg)](https://github.com/onxisdev/greenlight-w7/actions/workflows/build.yml)
 
 Greenlight is an open-source client for xCloud and Xbox home streaming made in Javascript and Typescript. The client is an application wrapper around [xbox-xcloud-player](https://github.com/unknownskl/xbox-xcloud-player).
 The application runs on Linux, macOS, Windows and Steam Deck.
@@ -19,11 +19,8 @@ _DISCLAIMER: Greenlight is not affiliated with Microsoft, Xbox or Moonlight. All
 
 ## Install
 
-### Install from Flathub:
-[![Build/release](https://flathub.org/assets/badges/flathub-badge-en.svg)](https://flathub.org/apps/details/io.github.unknownskl.greenlight)
-
 ### Download pre-compiled binaries:
-[Latest releases can be found here](https://github.com/unknownskl/greenlight/releases).
+[Latest releases can be found here](https://github.com/onxisdev/greenlight-w7/releases).
 
 ### Compile from source
 
